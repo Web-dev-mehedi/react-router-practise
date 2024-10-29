@@ -11,6 +11,8 @@ import Home from './components/home/Home';
 import About from './components/about/About';
 import Conatct from './components/contact/Conatct';
 import Users from './components/users/Users';
+import UserDetails from './components/userDetails/UserDetails';
+
 
 const router =createBrowserRouter([
   {
@@ -28,9 +30,18 @@ const router =createBrowserRouter([
     },
     {
       path:"/users",
+      // for fetching data from api using loader()
       loader:()=> fetch("https://jsonplaceholder.typicode.com/users"),
       element:<Users></Users>
+    },
+    {
+      // : use this we can assaign a value in userId from browser url search bar / for dynamic link
+      path:"/users/:userId",
+      loader: ({params}) => fetch(`https://jsonplaceholder.typicode.com/users/${params.userId}`),
+      element: <UserDetails></UserDetails>
     }
+
+
 
   ]
   }

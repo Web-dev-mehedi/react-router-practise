@@ -1,8 +1,9 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 
 const Users = () => {
 
+    // for call Api loaderdata
     const users = useLoaderData();
 
     return (
@@ -14,6 +15,7 @@ const Users = () => {
                         <p>Username: {item.username}</p>
                         <p>Email : {item.email}</p>
                         <p>Website : {item.website}</p>
+                        <Link to={`/users/${item.id}`}> Show Details</Link>
                          
                     </div>
                 ))
